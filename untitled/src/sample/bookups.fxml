@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<VBox prefHeight="600"
+      prefWidth="700" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      spacing="20"
+      fx:controller="sample.BookupsController" alignment="CENTER">
+    <HBox>
+        <HBox>
+            <VBox layoutX="26.0" layoutY="22.0" spacing="15.0">
+                <Label text="Number">
+                    <font>
+                        <Font size="14.0"/>
+                    </font>
+                </Label>
+                <Label text="Name">
+                    <font>
+                        <Font size="14.0"/>
+                    </font>
+                </Label>
+                <Label text="Phone">
+                    <font>
+                        <Font size="14.0"/>
+                    </font>
+                </Label>
+            </VBox>
+            <VBox layoutX="87.0" layoutY="22.0" prefHeight="130.0" spacing="10.0">
+                <TextField fx:id="numberField" editable="false"/>
+                <TextField fx:id="nameField" prefWidth="200.0"/>
+                <TextField fx:id="phoneField" prefWidth="150.0"/>
+            </VBox>
+            <VBox layoutX="87.0" layoutY="22.0" prefHeight="130.0" prefWidth="129.0" spacing="10.0">
+                <Button mnemonicParsing="false" onAction="#setEditable" prefHeight="30.0" prefWidth="60.0" text="Edit"/>
+            </VBox>
+        </HBox>
+        <VBox spacing="10.0">
+            <HBox spacing="10.0" alignment="CENTER">
+                <Button mnemonicParsing="false" onAction="#toFirst" prefHeight="30.0" prefWidth="60.0" text="First"/>
+                <Button mnemonicParsing="false" onAction="#toPrevious" prefHeight="30.0" prefWidth="75.0" text="Previous"/>
+                <Button mnemonicParsing="false" onAction="#toNext" prefHeight="30.0" prefWidth="60.0" text="Next"/>
+                <Button mnemonicParsing="false" onAction="#toLast" prefHeight="30.0" prefWidth="60.0" text="Last"/>
+            </HBox>
+            <HBox spacing="10.0" alignment="CENTER">
+                <Button fx:id="insertPassengerButton" mnemonicParsing="false" onAction="#insertPassengerButton" prefHeight="30.0"
+                        prefWidth="60.0" text="Insert"/>
+                <Button fx:id="updatePassengerButton" mnemonicParsing="false" onAction="#updatePassengerButton" prefHeight="30.0"
+                        prefWidth="60.0" text="Update"/>
+                <Button fx:id="deletePassengerButton" mnemonicParsing="false" onAction="#deletePassengerButton" prefHeight="30.0"
+                        prefWidth="60.0" text="Delete"/>
+            </HBox>
+        </VBox>
+    </HBox>
+    <VBox>
+        <HBox>
+            <Label text="Destination search">
+                <font>
+                    <Font size="14.0"/>
+                </font>
+            </Label>
+            <ComboBox fx:id="destinationSearch"/>
+            <Button onAction="#destinationSearch" text="Apply"/>
+        </HBox>
+        <HBox>
+            <Label text="Airplane search">
+                <font>
+                    <Font size="14.0"/>
+                </font>
+            </Label>
+            <TextField fx:id="airplaneSearch"/>
+            <Button onAction="#airplaneSearch" text="Apply"/>
+        </HBox>
+        <HBox>
+            <Label text="Filter Date from">
+                <font>
+                    <Font size="14.0"/>
+                </font>
+            </Label>
+            <TextField fx:id="dateFromFilter"/>
+            <Label text="to">
+                <font>
+                    <Font size="14.0"/>
+                </font>
+            </Label>
+            <TextField fx:id="dateToFilter"/>
+            <Button onAction="#dateFilter" text="Apply"/>
+        </HBox>
+        <HBox>
+            <Button onAction="#resetFilters" text="Reset Filters"/>
+        </HBox>
+    </VBox>
+    <TableView fx:id="tableView" prefHeight="600.0" prefWidth="595.0">
+        <columns>
+            <TableColumn fx:id="idColumn" prefWidth="35.0" text="id"/>
+            <TableColumn fx:id="airplaneColumn" prefWidth="120.0" text="airplane"/>
+            <TableColumn fx:id="destinationColumn" prefWidth="120.0" text="destination"/>
+            <TableColumn fx:id="arrivalColumn" prefWidth="120.0" text="arrival"/>
+            <TableColumn fx:id="dateColumn" prefWidth="200.0" text="date"/>
+        </columns>
+    </TableView>
+    <HBox spacing="10.0" alignment="CENTER">
+        <ComboBox fx:id="tripField"/>
+        <Button fx:id="insertBookupButton" mnemonicParsing="false" onAction="#insertBookupButton" prefHeight="30.0"
+                prefWidth="60.0" text="Insert"/>
+        <Button fx:id="deleteBookupButton" mnemonicParsing="false" onAction="#deleteBookupButton" prefHeight="30.0"
+                prefWidth="60.0" text="Delete"/>
+    </HBox>
+</VBox>

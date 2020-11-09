@@ -10,7 +10,7 @@ import java.util.List;
 
 import static db.DataSource.getConnection;
 
-public class TripDto extends Dto{
+public class TripDao {
 
     public static List<Trip> findAll() {
         List<Trip> trips = new ArrayList<>();
@@ -20,7 +20,7 @@ public class TripDto extends Dto{
              ResultSet resultSet = st.executeQuery()) {
             Trip trip;
             while (resultSet.next()) {
-                trip = new Trip(resultSet.getInt("id"), AirplaneDto.findById(resultSet.getInt("airplane_id")), resultSet.getString("date"), DestinationDto.findById(resultSet.getInt("destination_id")), DestinationDto.findById(resultSet.getInt("arrival_id")));
+                trip = new Trip(resultSet.getInt("id"), AirplaneDao.findById(resultSet.getInt("airplane_id")), resultSet.getString("date"), DestinationDao.findById(resultSet.getInt("destination_id")), DestinationDao.findById(resultSet.getInt("arrival_id")));
                 trips.add(trip);
             }
         } catch (Exception e) {
@@ -69,4 +69,17 @@ public class TripDto extends Dto{
         }
     }
 
+    public static Trip findById(int id) {
+        String query = "SELECT * FROM trips WHERE id="+id;
+        try (Connection connection = getConnection();
+             PreparedStatement st = connection.prepareStatement(query);
+             ResultSet resultSet = st.executeQuery()) {
+            while (resultSet.next()) {
+                return new Trip(resultSet.getInt("id"), AirplaneDao.findById(resultSet.getInt("airplane_id")), resultSet.getString("date"), DestinationDao.findById(resultSet.getInt("destination_id")), DestinationDao.findById(resultSet.getInt("arrival_id")));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

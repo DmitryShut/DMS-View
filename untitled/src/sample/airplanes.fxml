@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<VBox prefHeight="400"
+      prefWidth="700" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="sample.AirplanesController" alignment="CENTER">
+    <TableView fx:id="tableView" prefHeight="600.0" prefWidth="595.0">
+        <columns>
+            <TableColumn fx:id="idColumn" prefWidth="35.0" text="id"/>
+            <TableColumn fx:id="nameColumn" prefWidth="120.0" text="name"/>
+            <TableColumn fx:id="airplaneTypeColumn" prefWidth="120.0" text="airplaneType"/>
+            <TableColumn fx:id="capacityColumn" prefWidth="120.0" text="capacity"/>
+        </columns>
+    </TableView>
+    <HBox spacing="10.0" alignment="CENTER">
+        <Button fx:id="insertButton" mnemonicParsing="false" onAction="#insertButton" prefHeight="30.0"
+                prefWidth="60.0" text="Insert"/>
+        <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#deleteButton" prefHeight="30.0"
+                prefWidth="60.0" text="Delete"/>
+    </HBox>
+</VBox>

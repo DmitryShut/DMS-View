@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<VBox prefHeight="400"
+      prefWidth="700" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="sample.TripsController" alignment="CENTER">
+    <TableView fx:id="tableView" prefHeight="600.0" prefWidth="595.0">
+        <columns>
+            <TableColumn fx:id="idColumn" prefWidth="35.0" text="id"/>
+            <TableColumn fx:id="airplaneColumn" prefWidth="120.0" text="airplane"/>
+            <TableColumn fx:id="destinationColumn" prefWidth="120.0" text="destination"/>
+            <TableColumn fx:id="arrivalColumn" prefWidth="120.0" text="arrival"/>
+            <TableColumn fx:id="dateColumn" prefWidth="200.0" text="date"/>
+        </columns>
+    </TableView>
+    <HBox spacing="10.0" alignment="CENTER">
+        <Button fx:id="insertButton" mnemonicParsing="false" onAction="#insertButton" prefHeight="30.0"
+                prefWidth="60.0" text="Insert"/>
+        <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#deleteButton" prefHeight="30.0"
+                prefWidth="60.0" text="Delete"/>
+    </HBox>
+</VBox>

@@ -1,7 +1,7 @@
 package db;
 
+import entity.AirplaneType;
 import entity.Destination;
-import entity.Trip;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,52 +12,53 @@ import java.util.List;
 
 import static db.DataSource.getConnection;
 
-public class DestinationDto {
+public class AirplaneTypeDao {
 
-    public static Destination findById(Integer id){
-        Destination destination = null;
-        String query = "SELECT * FROM destinations WHERE id="+id;
+    public static AirplaneType findById(Integer id){
+        AirplaneType airplaneType = null;
+        String query = "SELECT * FROM airplane_type WHERE id="+id;
         try(Connection connection = getConnection();
             PreparedStatement st = connection.prepareStatement(query);
             ResultSet resultSet = st.executeQuery()) {
             while(resultSet.next()) {
-                return new Destination(resultSet.getInt("id"), resultSet.getString("country"));
+                airplaneType = new AirplaneType(resultSet.getInt("id"),
+                        resultSet.getString("type"));
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return destination;
+        return airplaneType;
     }
 
-    public static Destination findByCountry(String country){
-        Destination destination = null;
-        String query = "SELECT * FROM destinations WHERE country='"+country+"'";
+    public static AirplaneType findByType(String type) {
+        AirplaneType airplaneType = null;
+        String query = "SELECT * FROM airplane_type WHERE type="+type;
         try(Connection connection = getConnection();
             PreparedStatement st = connection.prepareStatement(query);
             ResultSet resultSet = st.executeQuery()) {
             while(resultSet.next()) {
-                return new Destination(resultSet.getInt("id"), resultSet.getString("country"));
+                airplaneType = new AirplaneType(resultSet.getInt("id"),
+                        resultSet.getString("type"));
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return destination;
+        return airplaneType;
     }
 
-    public static List<Destination> findAll(){
-        List<Destination> destinations = new ArrayList<>();
-        String query = "SELECT * FROM destinations";
+    public static List<AirplaneType> findAll() {
+        List<AirplaneType> airplaneTypes = new ArrayList<>();
+        String query = "SELECT * FROM airplane_type";
         try(Connection connection = getConnection();
             PreparedStatement st = connection.prepareStatement(query);
             ResultSet resultSet = st.executeQuery()) {
             while(resultSet.next()) {
-                destinations.add(new Destination(resultSet.getInt("id"),
-                        resultSet.getString("country")));
+                airplaneTypes.add(new AirplaneType(resultSet.getInt("id"),
+                        resultSet.getString("type")));
             }
         } catch (Exception e) {
-        e.printStackTrace();
+            e.printStackTrace();
+        }
+        return airplaneTypes;
     }
-        return destinations;
-    }
-
 }

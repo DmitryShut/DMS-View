@@ -1,6 +1,6 @@
 package entity.converters;
 
-import db.AirplaneDto;
+import db.AirplaneDao;
 import entity.Airplane;
 import javafx.util.StringConverter;
 
@@ -14,7 +14,7 @@ public class AirplaneStringConverter extends StringConverter<Airplane> {
             return null;
         } else {
             name = name.trim();
-            return name.length() < 1 ? null : AirplaneDto.findByName(name);
+            return name.length() < 1 ? null : AirplaneDao.findByName(name);
         }
     }
 

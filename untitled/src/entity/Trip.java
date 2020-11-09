@@ -27,6 +27,22 @@ public class Trip {
         this.arrival = arrival_id;
     }
 
+    public Trip(int id) {
+        this.id = id;
+    }
+
+    public Trip() {
+
+    }
+
+    @Override
+    public String toString() {
+        return "airplane=" + airplane +
+                ", date=" + date +
+                ", destination=" + destination +
+                ", arrival=" + arrival;
+    }
+
     public int getId() {
         return id;
     }

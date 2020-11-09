@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.15.0.final using JasperReports Library version 6.15.0-dd49bfb94918336b8321d5507193f0169ead4e95  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="subreport" pageWidth="320" pageHeight="842" columnWidth="280" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c5526d97-8168-45ed-a234-cb2603efbf8e">
+    <field name="date" class="java.lang.String"/>
+    <field name="destination" class="java.lang.String"/>
+    <background>
+        <band splitType="Stretch"/>
+    </background>
+    <columnHeader>
+        <band height="3" splitType="Stretch">
+            <staticText>
+                <reportElement mode="Opaque" x="-20" y="-20" width="160" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="cc678cdc-6930-4f88-83ef-f32c82952eec">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1bc44213-3b5b-4934-9028-668757e75c5f"/>
+                </reportElement>
+                <textElement textAlignment="Center">
+                    <font size="14" isBold="true"/>
+                </textElement>
+                <text><![CDATA[date]]></text>
+            </staticText>
+            <staticText>
+                <reportElement mode="Opaque" x="140" y="-20" width="160" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="6a493f4f-65c2-42c9-ba70-299c72c1f589">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1bc44213-3b5b-4934-9028-668757e75c5f"/>
+                </reportElement>
+                <textElement textAlignment="Center">
+                    <font size="14" isBold="true"/>
+                </textElement>
+                <text><![CDATA[destination]]></text>
+            </staticText>
+        </band>
+    </columnHeader>
+    <detail>
+        <band height="29" splitType="Stretch">
+            <textField>
+                <reportElement x="-20" y="5" width="160" height="20" uuid="e7dfd23c-3828-4851-864d-e644408edfe5">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1bc44213-3b5b-4934-9028-668757e75c5f"/>
+                </reportElement>
+                <textElement>
+                    <font size="14"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{date}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="140" y="5" width="160" height="20" uuid="8df2ca9c-6123-4461-b49d-502a94c2d7be">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1bc44213-3b5b-4934-9028-668757e75c5f"/>
+                </reportElement>
+                <textElement>
+                    <font size="14"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{destination}]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+</jasperReport>

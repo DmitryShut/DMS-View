@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<VBox prefHeight="600"
+      prefWidth="700" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="sample.MainController"
+      alignment="CENTER">
+    <HBox spacing="10.0" alignment="CENTER">
+        <Button fx:id="reportCustomersButton" mnemonicParsing="false" onAction="#reportCustomersButton" prefHeight="30.0"
+                prefWidth="60.0" text="Report Customers Trips"/>
+    </HBox>
+    <TabPane>
+        <Tab text="Bookups">
+            <fx:include source="bookups.fxml"/>
+        </Tab>
+        <Tab text="Trips">
+            <fx:include source="trips.fxml"/>
+        </Tab>
+        <Tab text="Airplanes">
+            <fx:include source="airplanes.fxml"/>
+        </Tab>
+    </TabPane>
+</VBox>

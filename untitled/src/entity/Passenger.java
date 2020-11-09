@@ -19,6 +19,11 @@ public class Passenger {
         this.phone = phone;
     }
 
+    public Passenger(String name, String phone) {
+        this.name = name;
+        this.phone = phone;
+    }
+
     public int getId() {
         return id;
     }

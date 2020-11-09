@@ -1,20 +1,16 @@
 package db;
 
 import entity.Airplane;
-import entity.AirplaneType;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
 import static db.DataSource.getConnection;
 
-public class AirplaneDto {
+public class AirplaneDao {
 
     public static List<Airplane> findAll(){
         List<Airplane> airplanes = new ArrayList<>();
@@ -25,7 +21,7 @@ public class AirplaneDto {
             while(resultSet.next()) {
                 airplanes.add(new Airplane(resultSet.getInt("id"),
                         resultSet.getString("name"),
-                        AirplaneTypeDto.findById(resultSet.getInt("airplane_type_id")),
+                        AirplaneTypeDao.findById(resultSet.getInt("airplane_type_id")),
                         resultSet.getInt("capacity")));
             }
         } catch (Exception e) {
@@ -43,7 +39,7 @@ public class AirplaneDto {
             while(resultSet.next()) {
                 airplane = new Airplane(resultSet.getInt("id"),
                         resultSet.getString("name"),
-                        AirplaneTypeDto.findById(resultSet.getInt("airplane_type_id")),
+                        AirplaneTypeDao.findById(resultSet.getInt("airplane_type_id")),
                         resultSet.getInt("capacity"));
             }
         } catch (Exception e) {
@@ -61,7 +57,7 @@ public class AirplaneDto {
             while(resultSet.next()) {
                 airplane = new Airplane(resultSet.getInt("id"),
                         resultSet.getString("name"),
-                        AirplaneTypeDto.findById(resultSet.getInt("airplane_type_id")),
+                        AirplaneTypeDao.findById(resultSet.getInt("airplane_type_id")),
                         resultSet.getInt("capacity"));
             }
         } catch (Exception e) {
@@ -70,4 +66,41 @@ public class AirplaneDto {
         return airplane;
     }
 
+    public static void add(Airplane airplane) {
+        String query = "INSERT INTO airplanes (name,airplane_type_id,capacity) VALUES (?,?,?)";
+        try (Connection connection = getConnection();
+             PreparedStatement st = connection.prepareStatement(query)) {
+            st.setString(1, airplane.getName());
+            st.setInt(2, airplane.getAirplaneType().getId());
+            st.setInt(3, airplane.getCapacity());
+            st.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void update(Airplane airplane) {
+        String query = "UPDATE airplanes SET name=?,airplane_type_id=?,capacity=? WHERE id=?";
+        try (Connection connection = getConnection();
+             PreparedStatement st = connection.prepareStatement(query)) {
+            st.setString(1, airplane.getName());
+            st.setInt(2, airplane.getAirplaneType().getId());
+            st.setInt(3, airplane.getCapacity());
+            st.setInt(4, airplane.getId());
+            st.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void delete(int idToDelete) {
+        String query = "DELETE FROM airplanes WHERE id=?";
+        try (Connection connection = getConnection();
+             PreparedStatement st = connection.prepareStatement(query)) {
+            st.setInt(1, idToDelete);
+            st.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

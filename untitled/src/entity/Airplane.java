@@ -10,11 +10,15 @@ public class Airplane {
 
     private int capacity;
 
-    public Airplane(int id, String name, AirplaneType airplane_type, int capacity) {
+    public Airplane(int id, String name, AirplaneType airplaneType, int capacity) {
         this.id = id;
         this.name = name;
-        this.airplaneType = airplane_type;
+        this.airplaneType = airplaneType;
         this.capacity = capacity;
+    }
+
+    public Airplane(int id) {
+        this.id = id;
     }
 
     @Override

@@ -1,6 +1,6 @@
 package entity.converters;
 
-import db.DestinationDto;
+import db.DestinationDao;
 import entity.Destination;
 import javafx.util.StringConverter;
 
@@ -14,7 +14,7 @@ public class DestinationStringConverter extends StringConverter<Destination> {
             return null;
         } else {
             name = name.trim();
-            return name.length() < 1 ? null : DestinationDto.findByCountry(name);
+            return name.length() < 1 ? null : DestinationDao.findByCountry(name);
         }
     }
 
